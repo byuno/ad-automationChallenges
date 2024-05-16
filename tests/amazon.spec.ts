@@ -1,13 +1,13 @@
 import { test, expect } from '@playwright/test';
 
-// test('Exercise #1 - Click on Watchlist while logged out', async ({ page }) => {
-//     await page.goto('https://www.amazon.ca/');
+//Using wish list since I couldn't find Watchlis
+test.only('Exercise #1 - Click on Wish List while logged out', async ({ page }) => {
+    await page.goto('https://www.amazon.ca/');
   
-//     // Expect a title "to contain" a substring.
-//     await expect(page).toHaveTitle('Amazon.ca: Low Prices – Fast Shipping – Millions of Items');
-//   });
 
-  test.only('Exercise #2 - Change the currency while logged out', async ({ page, context }) => {
+  });
+
+  test('Exercise #2 - Change the currency while logged out', async ({ page, context }) => {
     await page.goto('https://www.amazon.ca/');
     
     await page.getByLabel('Choose a language for shopping.').first().hover()
@@ -16,7 +16,8 @@ import { test, expect } from '@playwright/test';
 
     await expect(page.getByText("Website (Country/Region)")).toBeVisible()
 
-    await page.getByText('Canada').nth(2).click();
+    const canadaDropDown = page.locator('.a-dropdown-prompt')
+    await canadaDropDown.click()
     
     await page.getByRole("listbox").getByText('Japan (日本)').click()
     
