@@ -27,9 +27,11 @@ import { test, expect } from '@playwright/test';
     
     const newPage = await pagePromise;
     
-    await newPage.getByLabel('Choose a language for shopping.').first().hover();
+    await newPage.getByLabel('Choose a language for shopping.').first().click();
 
     //await page.locator('#nav-tools #icp-nav-flyout').waitFor(); 
 
     //await page.locator('#nav-tools #icp-nav-flyout').click();
+    
+    await expect(newPage.locator(".a-dropdown-prompt")).toHaveText('¥ - JPY - Japanese Yen (Default)');
   });
