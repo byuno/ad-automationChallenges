@@ -22,12 +22,16 @@ import { test, expect } from '@playwright/test';
     
     const pagePromise = context.waitForEvent('page');
     
-    //Use dispatched events to overcome 'intercepts pointer event' issue I was getting. 
-    await page.locator('#icp-save-button #icp-save-button-announce').getByText(' Go to website ').dispatchEvent('click');
+    //Use dispatched events to overcome 'intercepts pointer event' issue I was getting.
+    const goToWebsiteButton = page.locator('#icp-save-button #icp-save-button-announce')
+    await goToWebsiteButton.getByText(' Go to website ').dispatchEvent('click');
     
     const newPage = await pagePromise;
     
+    await expect(newPage).toHaveTitle('Amazon.co.jp | Books, Apparel, Electronics, Groceries & more');
+
     await newPage.getByLabel('Choose a language for shopping.').first().click();
     
-    await expect(newPage.locator(".a-dropdown-prompt")).toHaveText('¥ - JPY - Japanese Yen (Default)');
+    const currencyDropDown = newPage.locator(".a-dropdown-prompt");
+    await expect(currencyDropDown).toHaveText('¥ - JPY - Japanese Yen (Default)');
   });
