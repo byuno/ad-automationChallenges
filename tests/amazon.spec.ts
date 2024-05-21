@@ -34,11 +34,19 @@ test.only('Exercise #1 - Click on Wish List while logged out', async ({ page }) 
     
     const pagePromise = context.waitForEvent('page');
     
-    //Use dispatched events to overcome 'intercepts pointer event' issue I was getting.
-    const goToWebsiteButton = page.locator('#icp-save-button #icp-save-button-announce')
-    //await goToWebsiteButton.getByText(' Go to website ').dispatchEvent('click');
-    await goToWebsiteButton.getByText(' Go to website ').click()
+    // //Use dispatched events to overcome 'intercepts pointer event' issue I was getting.
+    // const goToWebsiteButton = page.locator('#icp-save-button #icp-save-button-announce')
+    // //await goToWebsiteButton.getByText(' Go to website ').dispatchEvent('click');
+    // await goToWebsiteButton.getByText(' Go to website ').click()
+
+    const goToWebsiteBtn = page.locator('#icp-save-button', {
+      hasText: 'Go to website',
+    });
+    
+    await goToWebsiteBtn.click();
+    
     const newPage = await pagePromise;
+    
     
     await expect(newPage).toHaveTitle('Amazon.co.jp | Books, Apparel, Electronics, Groceries & more');
 
