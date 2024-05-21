@@ -2,11 +2,11 @@ import { test, expect } from '@playwright/test';
 
 test('Exercise #3 - Add Ikea furniture to shopping list', async ({ page }) => {
     await page.goto('https://www.ikea.com/ca/en/');
-
-    const shopProductsButton = page.locator('hnf-overflow-carousel__content').getByText('Explore rooms')
-    await shopProductsButton.click();
-
-    // const bedAndMattressButton = page.locator('.hnf-carousel__tabs-navigation-products').getByRole("button", {name: 'Beds & mattresses'});
-    // await bedAndMattressButton.click();
+    await page.getByRole('button', { name: 'Beds & mattresses' }).click();
+    // await page.getByLabel('Submenu for Beds & mattresses').getByRole('link', { name: 'Mattresses', exact: true }).click();
+    // await page.getByRole('button', { name: 'Ok', exact: true }).click();
+    // await page.locator('.plp-product__image-link').first().click();
+    // await page.getByRole('button', { name: 'Add to cart' }).click();
+    // await page.getByLabel('Go to shopping bag').click();
 
 })
