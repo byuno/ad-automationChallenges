@@ -13,9 +13,18 @@ test('Exercise #4 - Verify category list', async ({page})=> {
     const countCards = await productCategoryCard.count();
     console.log(await productCategoryCard.count())
  
-    //Verify each card has Product on them
+    // //Verify each card has Product on them
     for (let i = 0; i < countCards - 1; i++) {
         const categoryOnCard = page.locator('.pdt-index .active').nth(i).locator('.category-tag');
-        await expect(categoryOnCard).toContainText('Product');
+        await expect(categoryOnCard).toContainText('Product'); 
     }
+
+     //Verify each card has Product on them
+//      const categoriesOnCard = await productCategoryCard
+//      .locator('.category-tag')
+//      .all();
+
+//  for (const category of categoriesOnCard) {
+//      await expect(category).toContainText('Product');
+//  }   
 })
