@@ -16,7 +16,11 @@ test('Exercise #5 - Verify Samsung.com exclusive colours', async({page}) => {
     //Click on hamburger menu
     const hamBtn = await page.locator('.nv00-gnb__utility-wrap .hamburger')
     await hamBtn.click();
-    await page.pause()
+
+    //Click on Mobile section
+    //const mobileButton
+
+
     // //Click on Mobile category
     // const mobileMenuBtn = await page.getByRole('menubar').getByRole('listitem').getByRole('menuitem', {name: 'Mobile'})
     // await mobileMenuBtn.hover();
