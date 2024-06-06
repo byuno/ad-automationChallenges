@@ -25,4 +25,10 @@ test('Exercise #5 - Verify Samsung.com exclusive colours', async({page}) => {
     // const mobileMenuBtn = await page.getByRole('menubar').getByRole('listitem').getByRole('menuitem', {name: 'Mobile'})
     // await mobileMenuBtn.hover();
     
+    //Click on smartphone section
+    const smartphoneBtn = await page.getByRole('menuitem', {name: "Smartphones"});
+    await smartphoneBtn.click()
+
+    //Click on Galaxy S24
+    await page.getByRole('link', { name: 'New Galaxy S24 Ultra Online' }).click();
 })
