@@ -16,11 +16,20 @@ test('Exercise #5 - Verify Samsung.com exclusive colours', async({page}) => {
     //Click on hamburger menu
     const hamBtn = await page.locator('.nv00-gnb__utility-wrap .hamburger')
     await hamBtn.click();
-
+    
     //Click on Mobile section
-    await page.waitForLoadState()
-    const mobileButton = await page.locator('nv00-gnb__l0-menu-wrap').getByRole('listitem').nth(2).getByText(' Mobile ')
-    await mobileButton.click();
+    await page.getByRole('menuitem', { name: 'Mobile' }).click();
 
+    await page.getByRole('menuitem', { name: 'Smartphones' }).click();
+    
+    await page.getByLabel('Galaxy S Samsung Galaxy').click();
+    
+    await page.getByRole('button', { name: 'Titanium violet selected' }).click();
+    
+    await page.getByLabel('Galaxy S24 Ultra', { exact: true }).first().click();
+    
+    await page.getByRole('tab', { name: 'Titanium Black' }).click();
+    
+    await expect(page.locator('#titanium-black div').nth(1)).toBeVisible();
 
 })
